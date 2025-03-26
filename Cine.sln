@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cine.Api", "Cine.Api\Cine.Api.csproj", "{2056B074-3A5E-4303-91D0-C5047BC1E9CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2056B074-3A5E-4303-91D0-C5047BC1E9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2056B074-3A5E-4303-91D0-C5047BC1E9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2056B074-3A5E-4303-91D0-C5047BC1E9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2056B074-3A5E-4303-91D0-C5047BC1E9CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6857CB60-3BF4-4C9B-8813-66B3BD817351}
+	EndGlobalSection
+EndGlobal
