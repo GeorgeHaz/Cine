@@ -10,5 +10,6 @@ namespace Cine.Api.Repository.Intefaces
         Task AddAsync(SalaCine sala);
         Task UpdateAsync(SalaCine sala);
         Task DeleteAsync(int id);
+        Task<int> GetPeliculaCountBySalaAsync(int salaCineId);
     }
 }

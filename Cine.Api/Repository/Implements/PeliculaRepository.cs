@@ -19,6 +19,7 @@ namespace Cine.Api.Repository.Implements
         public async Task<IEnumerable<Pelicula>> GetAllAsync()
         {
             return await _context.Peliculas
+                .Where(e => e.AuditDeleteDate == null)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -27,21 +28,22 @@ namespace Cine.Api.Repository.Implements
         {
             return await _context.Peliculas
                 .AsNoTracking()
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(e => e.PeliculaId == id && e.AuditDeleteDate == null);
         }
         public async Task<IEnumerable<Pelicula>> GetByNombreAsync(string nombre)
         {
             return await _context.Peliculas
                 .AsNoTracking()
-                .Where(p => p.Nombre.Contains(nombre))
+                .Where(p => p.Nombre.Contains(nombre) && p.AuditDeleteDate == null)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Pelicula>> GetByFechaPublicacionAsync(DateTime fecha)
         {
             return await _context.Peliculas
+                .FromSqlRaw("EXEC GetPeliculasByFecha @p0",fecha.Date)
+                .Where(p => p.AuditDeleteDate == null)
                 .AsNoTracking()
-                .Where(p => p.FechaPublicacion.Date == fecha.Date)
                 .ToListAsync();
         }
 
@@ -62,7 +64,11 @@ namespace Cine.Api.Repository.Implements
             var entity = await _context.Peliculas.FindAsync(id);
             if (entity == null) return;
 
-            _context.Peliculas.Remove(entity);
+            entity.AuditDeleteDate = DateTime.UtcNow;
+            entity.AuditDeleteUser = 1;
+
+            _context.Peliculas.Update(entity);
+            
             await _context.SaveChangesAsync();
         }
     }

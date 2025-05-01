@@ -46,6 +46,18 @@ namespace Cine.Api.Services.Repository
             };
         }
 
+        public async Task<IEnumerable<PeliculaSalaCineDto>> SearchFromDateAsync(DateTime fecha)
+        {
+            var entities = await _repository.GetFromDateAsync(fecha);
+            return entities.Select(p => new PeliculaSalaCineDto
+            {
+                PeliculaCineId = p.PeliculaSalaCineId,
+                SalaCineId = p.SalaCineId,
+                PeliculaId = p.PeliculaId,
+                FechaPublicacion = p.FechaPublicacion,
+                FechaFin = p.FechaFin
+            });
+        }
         public async Task<PeliculaSalaCineDto> CreateAsync(PeliculaSalaCineDto dto)
         {
             var entity = new PeliculaSalacine

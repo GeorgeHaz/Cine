@@ -30,6 +30,14 @@ namespace Cine.Api.Repository.Implements
                 .AsNoTracking()
                 .FirstOrDefaultAsync(e => e.PeliculaSalaCineId == id);
         }
+        public async Task<IEnumerable<PeliculaSalacine>> GetFromDateAsync(DateTime fecha)
+        {
+            return await _context.PeliculaSalacines
+                .FromSqlRaw("EXEC dbo.GetPeliculaSalaCineFromDate @p0", fecha.Date)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public async Task AddAsync(PeliculaSalacine asignacion)
         {
             await _context.PeliculaSalacines.AddAsync(asignacion);

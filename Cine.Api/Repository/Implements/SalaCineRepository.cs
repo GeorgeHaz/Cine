@@ -16,6 +16,7 @@ namespace Cine.Api.Repository.Implements
         public async Task<IEnumerable<SalaCine>> GetAllAsync()
         {
             return await _context.SalaCines
+                .Where(e => e.AuditDeleteUser == null)
                 .AsNoTracking() 
                 .ToListAsync();
         }
@@ -24,14 +25,14 @@ namespace Cine.Api.Repository.Implements
         {
             return await _context.SalaCines
                 .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.SalaCineId == id);
+                .FirstOrDefaultAsync(e => e.SalaCineId == id && e.AuditDeleteDate == null);
         }
 
         public async Task<IEnumerable<SalaCine>> GetByNameAsync(string nombre)
         {
             return await _context.SalaCines
                 .AsNoTracking()
-                .Where(e => e.Nombre.Contains(nombre))
+                .Where(e => e.Nombre.Contains(nombre) && e.AuditDeleteDate == null)
                 .ToListAsync();
         }
         public async Task AddAsync(SalaCine sala)
@@ -50,9 +51,16 @@ namespace Cine.Api.Repository.Implements
             var entity = await _context.SalaCines.FindAsync(id);
             if (entity is null) return;
 
-            _context.SalaCines.Remove(entity);
+            entity.AuditDeleteDate = DateTime.UtcNow;
+            entity.AuditDeleteUser = 1;
+            _context.SalaCines.Update(entity);
             await _context.SaveChangesAsync();
         }
 
+        public async Task<int> GetPeliculaCountBySalaAsync(int salaCineId)
+        {
+            return await _context.PeliculaSalacines
+                .CountAsync(e => e.SalaCineId == salaCineId);
+        }
     }
 }

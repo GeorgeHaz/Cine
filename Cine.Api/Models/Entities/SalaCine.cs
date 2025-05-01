@@ -6,7 +6,7 @@ public partial class SalaCine : AuditableEntity
 
     public string Nombre { get; set; } = null!;
 
-    public string Estado { get; set; } = "Disponible";
+    public string Estado { get; set; } = "Sala disponible";
 
     public virtual ICollection<PeliculaSalacine> PeliculaSalacines { get; set; } = new List<PeliculaSalacine>();
 }

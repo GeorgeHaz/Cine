@@ -33,7 +33,7 @@ namespace Cine.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("BuscarPorNombre/{peliculaNombre}")]
+        [HttpGet("BuscarPelicula")]
         public async Task<IActionResult> ObtenerPorNombre([FromQuery] string? peliculaNombre, [FromQuery] DateTime? fecha)
         {
             try

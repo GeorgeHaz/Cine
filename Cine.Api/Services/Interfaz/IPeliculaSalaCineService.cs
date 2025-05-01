@@ -9,5 +9,6 @@ namespace Cine.Api.Services.Interfaz
         Task<PeliculaSalaCineDto> CreateAsync(PeliculaSalaCineDto dto);
         Task<bool> UpdateAsync(PeliculaSalaCineDto dto);
         Task<bool> DeleteAsync(int id);
+        Task<IEnumerable<PeliculaSalaCineDto>> SearchFromDateAsync(DateTime fecha);
     }
 }

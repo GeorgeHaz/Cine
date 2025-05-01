@@ -39,10 +39,17 @@ namespace Cine.Api.Controllers
             return Ok("Creado con exito");
         }
 
+        [HttpGet("Buscar/desde")]
+        public async Task<ActionResult<IEnumerable<PeliculaSalaCineDto>>> BuscarDesdeFecha([FromQuery] DateTime fecha)
+        {
+            var dtos = await _service.SearchFromDateAsync(fecha);
+            return Ok(dtos);
+        }
+
         [HttpPut("Editar/{peliculaSalaCineId:int}")]
         public async Task<IActionResult> EditarPelicula(int peliculaSalaCineId, [FromBody] PeliculaSalaCineDto requestDto)
         {
-            if (peliculaSalaCineId != requestDto.SalaCineId) return BadRequest("Id no encontrado");
+            if (peliculaSalaCineId != requestDto.PeliculaCineId) return BadRequest("Id no encontrado");
 
             await _service.UpdateAsync(requestDto);
             return Ok("Editado con exito");

@@ -31,7 +31,7 @@ namespace Cine.Api.Controllers
             return Ok(response);
         }
 
-        [HttpGet("BuscarPorNombre/{salaCineNombre}")]
+        [HttpGet("BuscarPorNombre")]
         public async Task<IActionResult> ObtenerPorNombre([FromQuery] string? salaCineNombre)
         {
             var response = await _service.SearchByNameAsync(salaCineNombre!);

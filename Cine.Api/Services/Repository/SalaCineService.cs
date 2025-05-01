@@ -17,13 +17,19 @@ namespace Cine.Api.Services.Repository
         {
             var entities = await _repository.GetAllAsync();
             var dtos = new List<SalaCineDto>();
-            foreach (var s in entities)
+            foreach (var entity in entities)
             {
+                var count = await _repository.GetPeliculaCountBySalaAsync(entity.SalaCineId);
+                var mensaje = count < 3
+                    ? "Sala disponible"
+                    : count <= 5
+                        ? $"Sala con {count} películas asignadas"
+                        : "Sala no disponible";
                 dtos.Add(new SalaCineDto
                 {
-                    SalaCineId = s.SalaCineId,
-                    Nombre = s.Nombre,
-                    Estado = s.Estado
+                    SalaCineId = entity.SalaCineId,
+                    Nombre = entity.Nombre,
+                    Estado = mensaje
                 });
             }
             return dtos;
@@ -33,6 +39,13 @@ namespace Cine.Api.Services.Repository
         {
             var entity = await _repository.GetByIdAsync(id);
             if (entity is null) return null;
+
+            var count = await _repository.GetPeliculaCountBySalaAsync(entity.SalaCineId);
+            var mensaje = count < 3
+                ? "Sala disponible"
+                : count <= 5
+                    ? $"Sala con {count} películas asignadas"
+                    : "Sala no disponible";
 
             return new SalaCineDto
             {
@@ -44,19 +57,30 @@ namespace Cine.Api.Services.Repository
 
         public async Task<IEnumerable<SalaCineDto>> SearchByNameAsync(string nombre)
         {
-            var list = await _repository.GetByNameAsync(nombre);
+            var entity = await _repository.GetByNameAsync(nombre);
             var dtos = new List<SalaCineDto>();
-            foreach(var s in list)
+
+            foreach (var s in entity)
             {
+                var count = await _repository.GetPeliculaCountBySalaAsync(s.SalaCineId);
+
+                string message = count < 3
+                    ? "Sala Disponible"
+                    : count <= 5
+                        ? $"Sala con {count} peliculas asignadas"
+                        : "Sala no disponible";
+
                 dtos.Add(new SalaCineDto
                 {
                     SalaCineId = s.SalaCineId,
                     Nombre = s.Nombre,
-                    Estado = s.Estado
+                    Estado = message
                 });
             }
+
             return dtos;
         }
+ 
         public async Task<SalaCineDto> CreateAsync(SalaCineDto dto)
         {
             var entity = new SalaCine
@@ -90,5 +114,21 @@ namespace Cine.Api.Services.Repository
             await _repository.DeleteAsync(id);
             return true;
         }
+
+        //public async Task<IEnumerable<SalaCineDto>> SearchByNameAsync(string nombre)
+        //{
+        //    var list = await _repository.GetByNameAsync(nombre);
+        //    var dtos = new List<SalaCineDto>();
+        //    foreach (var s in list)
+        //    {
+        //        dtos.Add(new SalaCineDto
+        //        {
+        //            SalaCineId = s.SalaCineId,
+        //            Nombre = s.Nombre,
+        //            Estado = s.Estado
+        //        });
+        //    }
+        //    return dtos;
+        //}
     }
 }
