@@ -1,234 +1,842 @@
 {
 	"info": {
-		"_postman_id": "0e446e61-bcec-432c-a81a-ddb84a5f00a8",
-		"name": "Cine",
+		"_postman_id": "b8ddb19e-4f56-4ac9-8690-d29e3017c4aa",
+		"name": "Cine Prueba",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27915712"
+		"_exporter_id": "44600573",
+		"_collection_link": "https://george-5604521.postman.co/workspace/George's-Workspace~79d51bd7-51f1-414a-875e-4c6a53faee7b/collection/44600573-b8ddb19e-4f56-4ac9-8690-d29e3017c4aa?action=share&source=collection_link&creator=44600573"
 	},
 	"item": [
 		{
-			"name": "Crear Pelicula",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Isidious\",\r\n  \"duracion\": 180\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Pelicula",
+			"item": [
+				{
+					"name": "ListPelicula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/Registrar",
-					"protocol": "https",
-					"host": [
-						"localhost"
 					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"Registrar"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar Peliculas",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Pelicula ById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula",
-					"protocol": "https",
-					"host": [
-						"localhost"
 					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Peliculas por id",
-			"request": {
-				"auth": {
-					"type": "noauth"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula/BuscarPorId/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula",
+								"BuscarPorId",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/BuscarPorId/2",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"BuscarPorId",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Pelicula por nombre",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/BuscarPorNombre/Volver",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"BuscarPorNombre",
-						"Volver"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Editar Pelicula",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Interestelar\",\r\n  \"duracion\": 240\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Pelicula By Name Date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/Editar/5",
-					"protocol": "https",
-					"host": [
-						"localhost"
 					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"Editar",
-						"5"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula/BuscarPelicula?peliculaNombre=Insiduos&fecha",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula",
+								"BuscarPelicula"
+							],
+							"query": [
+								{
+									"key": "peliculaNombre",
+									"value": "Insiduos"
+								},
+								{
+									"key": "fecha",
+									"value": null
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Pelicula Registrar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaId\": 7,\n  \"nombre\": \"Capitan America\",\n  \"duracion\": 180,\n  \"fechaPublicacion\": \"2025-04-12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula/Registrar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula",
+								"Registrar"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Pelicula Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaId\": 2,\n  \"nombre\": \"Volver al Futuro 1\",\n  \"duracion\": 220,\n  \"fechaPublicacion\": \"2025-04-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula/Editar/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula",
+								"Editar",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Pelicula Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaId\": 2,\n  \"nombre\": \"Volver al Futuro 1\",\n  \"duracion\": 220,\n  \"fechaPublicacion\": \"2025-04-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/Pelicula/Eliminar/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"Pelicula",
+								"Eliminar",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Eliminado Logico de Pelicula",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/Eliminar/10",
-					"protocol": "https",
-					"host": [
-						"localhost"
+			"name": "SalaCine",
+			"item": [
+				{
+					"name": "SalaCine List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"Eliminar",
-						"10"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "SalaCine By Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine/BuscarPorId/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine",
+								"BuscarPorId",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "SalaCine By Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine/BuscarPorNombre?salaCineNombre=Sala%2002",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine",
+								"BuscarPorNombre"
+							],
+							"query": [
+								{
+									"key": "salaCineNombre",
+									"value": "Sala%2002"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "SalaCine Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"salaCineId\": 2,\n  \"nombre\": \"Sala 02\",\n  \"estado\": \"Sala disponible\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine/Registrar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine",
+								"Registrar"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "SalaCine Edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"salaCineId\": 2,\n  \"nombre\": \"Sala 02\",\n  \"estado\": \"Sala Disponible\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine/Editar/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine",
+								"Editar",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "SalaCine Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaId\": 2,\n  \"nombre\": \"Volver al Futuro 1\",\n  \"duracion\": 220,\n  \"fechaPublicacion\": \"2025-04-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/SalaCine/Eliminar/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"SalaCine",
+								"Eliminar",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Buscar por fecha de publicacion",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/BuscarPorFecha/2025-03-23",
-					"protocol": "https",
-					"host": [
-						"localhost"
+			"name": "PeliculaSalaCine",
+			"item": [
+				{
+					"name": "PeliculaSalaCine List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"BuscarPorFecha",
-						"2025-03-23"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "PeliculaSalaCine By Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine/BuscarPorId/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine",
+								"BuscarPorId",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "PeliculaSalaCine From Date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine/Buscar/desde?fecha=2025-04-03",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine",
+								"Buscar",
+								"desde"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2025-04-03"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "PeliculaSalaCine Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaCineId\": 6,\n  \"salaCineId\": 1,\n  \"peliculaId\": 7,\n  \"fechaPublicacion\": \"2025-04-10\",\n  \"fechaFin\": \"2025-04-25\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine/Registrar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine",
+								"Registrar"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "PeliculaSalaCine Edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"peliculaCineId\": 3,\n        \"salaCineId\": 2,\n        \"peliculaId\": 4,\n        \"fechaPublicacion\": \"2025-04-10T00:00:00\",\n        \"fechaFin\": \"2025-04-25T00:00:00\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine/Editar/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine",
+								"Editar",
+								"3"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "PeliculaSalaCine Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"peliculaId\": 2,\n  \"nombre\": \"Volver al Futuro 1\",\n  \"duracion\": 220,\n  \"fechaPublicacion\": \"2025-04-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7279/api/PeliculaSalaCine/Eliminar/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7279",
+							"path": [
+								"api",
+								"PeliculaSalaCine",
+								"Eliminar",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "Buscar disponibilidad de peliculas en sala",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:7279/api/Pelicula/BuscarDisponiblidadSala/Sala%2003",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "7279",
-					"path": [
-						"api",
-						"Pelicula",
-						"BuscarDisponiblidadSala",
-						"Sala%2003"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
 		}
 	]
 }
