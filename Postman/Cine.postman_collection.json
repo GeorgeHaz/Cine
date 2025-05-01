@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "0e446e61-bcec-432c-a81a-ddb84a5f00a8",
+		"name": "Cine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27915712"
+	},
+	"item": [
+		{
+			"name": "Crear Pelicula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Isidious\",\r\n  \"duracion\": 180\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/Registrar",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"Registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Peliculas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Peliculas por id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/BuscarPorId/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"BuscarPorId",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pelicula por nombre",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/BuscarPorNombre/Volver",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"BuscarPorNombre",
+						"Volver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Pelicula",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Interestelar\",\r\n  \"duracion\": 240\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/Editar/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"Editar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminado Logico de Pelicula",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/Eliminar/10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"Eliminar",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por fecha de publicacion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/BuscarPorFecha/2025-03-23",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"BuscarPorFecha",
+						"2025-03-23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar disponibilidad de peliculas en sala",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7279/api/Pelicula/BuscarDisponiblidadSala/Sala%2003",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7279",
+					"path": [
+						"api",
+						"Pelicula",
+						"BuscarDisponiblidadSala",
+						"Sala%2003"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
