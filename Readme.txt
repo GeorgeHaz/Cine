@@ -1,7 +1,6 @@
--Para la base de datos se realizo el Database First.
+-Para la base de datos se realizo el CodeFirst, pero tambien agrego el SQL para database first.
 -En la carpeta SQL se incluye tanto la base, como los procedimientos almacenados.
 -Ademas se incluye un sript para colocar datos iniciles.
--Se utilizo scaffold para poder crear las entidades de forma automatizada
 
 -Una vez levantado, se debe instalar paquetes nugget como son:
 ---Microsoft.EntityFrameworkCore
