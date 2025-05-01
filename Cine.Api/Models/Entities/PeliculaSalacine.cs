@@ -2,17 +2,13 @@
 
 public partial class PeliculaSalacine
 {
-    public int IdPeliculaSala { get; set; }
+    public int PeliculaSalaCineId { get; set; }
 
-    public int IdSalaCine { get; set; }
+    public int SalaCineId { get; set; }
+    public SalaCine SalaCine { get; set; } = null!;
+    public int PeliculaId { get; set; }
+    public Pelicula Pelicula { get; set; } = null!;
 
-    public DateOnly FechaPublicacion { get; set; }
-
-    public DateOnly FechaFin { get; set; }
-
-    public int IdPelicula { get; set; }
-
-    public virtual Pelicula IdPeliculaNavigation { get; set; } = null!;
-
-    public virtual SalaCine IdSalaCineNavigation { get; set; } = null!;
+    public DateTime FechaPublicacion { get; set; }
+    public DateTime FechaFin { get; set; }
 }

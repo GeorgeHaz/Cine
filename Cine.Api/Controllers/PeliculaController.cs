@@ -1,5 +1,5 @@
 ﻿using Cine.Api.Models.Dto;
-using Cine.Api.Services;
+using Cine.Api.Services.Interfaz;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cine.Api.Controllers
@@ -16,65 +16,59 @@ namespace Cine.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListarPelicula()
+        public async Task<ActionResult<IEnumerable<PeliculaDto>>> ListarPelicula()
         {
-            var response = await _service.ListarPeliculas();
+            var response = await _service.GetAllAsync();
+            if (response is null) return NotFound();
 
             return Ok(response);
         }
 
         [HttpGet("BuscarPorId/{peliculaId}")]
-        public async Task<IActionResult> ObtenerPorId(int peliculaId)
+        public async Task<ActionResult<PeliculaDto>> ObtenerPorId(int peliculaId)
         {
-            var response = await _service.PeliculaPorId(peliculaId);
+            var response = await _service.GetByIdAsync(peliculaId);
+            if (response is null) return NotFound();
 
             return Ok(response);
         }
 
         [HttpGet("BuscarPorNombre/{peliculaNombre}")]
-        public async Task<IActionResult> ObtenerPorNombre(string peliculaNombre)
+        public async Task<IActionResult> ObtenerPorNombre([FromQuery] string? peliculaNombre, [FromQuery] DateTime? fecha)
         {
-            var response = await _service.PeliculaPorNombre(peliculaNombre);
-
-            return Ok(response);
+            try
+            {
+                var response = await _service.SearchAsync(peliculaNombre, fecha);
+                return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("Registrar")]
-        public async Task<IActionResult> CrearPelicula([FromBody]PeliculaRequestDto requestDto)
+        public async Task<ActionResult<PeliculaDto>> CrearPelicula([FromBody]PeliculaDto requestDto)
         {
-            await _service.CrearPelicula(requestDto);
+            await _service.CreateAsync(requestDto);
 
             return Ok("Pelicula Creada");
         }
 
         [HttpPut("Editar/{peliculaId:int}")]
-        public async Task<IActionResult> EditarPelicula(int peliculaId,[FromBody] PeliculaRequestDto requestDto)
+        public async Task<IActionResult> EditarPelicula(int peliculaId,[FromBody] PeliculaDto requestDto)
         {
-            await _service.EditarPelicula(peliculaId, requestDto);
+            if (peliculaId != requestDto.PeliculaId) return BadRequest("Id no encontrado");
+
+            await _service.UpdateAsync(requestDto);
             return Ok("Editado con exito");
         }
 
         [HttpPut("Eliminar/{peliculaId:int}")]
         public async Task<IActionResult> Eliminar(int peliculaId)
         {
-            await _service.EliminarPelicula(peliculaId);
+            await _service.DeleteAsync(peliculaId);
             return Ok("Eliminado con exito");
-        }
-
-        [HttpGet("BuscarPorFecha/{peliculaPorFecha}")]
-        public async Task<IActionResult> ObtenerPorFecha(DateTime peliculaPorFecha)
-        {
-            var response = await _service.PeliculaPorFecha(peliculaPorFecha);
-
-            return Ok(response);
-        }
-
-        [HttpGet("BuscarDisponiblidadSala/{nombreSala}")]
-        public async Task<IActionResult> ObtenerSala(string nombreSala)
-        {
-            var response = await _service.SalaDisponible(nombreSala);
-
-            return Ok(new {response});
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace Cine.Api.Models.Dto
 {
-    public class PeliculaResponseDto
+    public class PeliculaDto
     {
-        public int IdPelicula { get; set; }
+        public int PeliculaId { get; set; }
         public string Nombre { get; set; } = null!;
         public int Duracion { get; set; }
+        public DateTime FechaPublicacion { get; set; }
 
     }
 }

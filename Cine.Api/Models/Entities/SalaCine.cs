@@ -1,16 +1,12 @@
 ﻿namespace Cine.Api.Models.Entities;
 
-public partial class SalaCine
+public partial class SalaCine : AuditableEntity
 {
-    public int IdSalaCine { get; set; }
+    public int SalaCineId { get; set; }
 
     public string Nombre { get; set; } = null!;
 
-    public int Estado { get; set; }
-
-    public int Activo { get; set; }
-
-    public DateTime? FechaEliminacion { get; set; }
+    public string Estado { get; set; } = "Disponible";
 
     public virtual ICollection<PeliculaSalacine> PeliculaSalacines { get; set; } = new List<PeliculaSalacine>();
 }

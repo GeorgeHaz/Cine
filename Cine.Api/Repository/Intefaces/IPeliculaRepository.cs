@@ -5,13 +5,12 @@ namespace Cine.Api.Repository.Intefaces
 {
     public interface IPeliculaRepository
     {
-        Task<bool> CrearPelicula(Pelicula pelicula);
-        Task<bool> EditarPelicula(Pelicula pelicula);
-        Task EliminarPelicula(Pelicula pelicula);
-        Task<IEnumerable<Pelicula>> ListarPeliculas();
-        Task<IEnumerable<Pelicula?>> ObtenerPorNombre(string nombrePelicula);
-        Task<Pelicula?> ObtenerPorId(int id);
-        Task<IEnumerable<PeliculasPorFechaDto?>> PeliculaPorFecha(DateTime fecha);
-        Task<SalaDisponibleDto?> SalaDisponible(string nombreSala);
+        Task<IEnumerable<Pelicula>> GetAllAsync();
+        Task<Pelicula?> GetByIdAsync(int id);
+        Task<IEnumerable<Pelicula>> GetByNombreAsync(string nombre);
+        Task<IEnumerable<Pelicula>> GetByFechaPublicacionAsync(DateTime fecha);
+        Task AddAsync(Pelicula pelicula);
+        Task UpdateAsync(Pelicula pelicula);
+        Task DeleteAsync(int id);
     }
 }

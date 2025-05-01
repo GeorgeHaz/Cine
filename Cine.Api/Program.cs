@@ -1,13 +1,21 @@
 using Cine.Api.Data;
-using Cine.Api.Repository.Implementaciones;
+using Cine.Api.Repository.Implements;
 using Cine.Api.Repository.Intefaces;
-using Cine.Api.Services;
+using Cine.Api.Services.Interfaz;
+using Cine.Api.Services.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IPeliculaService, PeliculaService>();
+//Registro de repositorios
 builder.Services.AddScoped<IPeliculaRepository, PeliculaRepository>();
+builder.Services.AddScoped<ISalaCineRepository, SalaCineRepository>();
+builder.Services.AddScoped<IPeliculaSalaCineRepository, PeliculaSalaCineRepository>();
+
+//Registro de servicios
+builder.Services.AddScoped<IPeliculaService, PeliculaService>();
+builder.Services.AddScoped<ISalaCineService, SalaCineService>();
+builder.Services.AddScoped<IPeliculaSalaCineService, PeliculaSalaCineService>();
 
 // Add services to the container.
 
